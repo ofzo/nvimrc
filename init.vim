@@ -52,10 +52,13 @@ set helplang=cn
 set cindent
 set expandtab
 set tabstop=4
+set shiftwidth=4
+set softtabstop=0
+set smarttab
 set wildmenu
 set wildmode=list:longest,full
 
-filetype plugin indent on 
+filetype plugin indent on
 
 
 
@@ -76,9 +79,9 @@ let g:airline#extensions#tabline#formatter = 'default'
 :nnoremap <space>z :undo<CR>
 :nnoremap <space>q :q<CR>
 " find file
-:nnoremap <space>ff :Telescope find_files<CR> 
+:nnoremap <space>ff :Telescope find_files<CR>
 " find buffer
-:nnoremap <space>fb :Telescope buffers<CR> 
+:nnoremap <space>fb :Telescope buffers<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -93,5 +96,3 @@ hi Identifier ctermfg=yellow
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " starting
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
-
-
