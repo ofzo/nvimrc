@@ -4,6 +4,9 @@ require 'lspconfig'.rust_analyzer.setup{}
 require 'lspconfig'.tsserver.setup{}
 -- require ("nvim-gps").setup()
 
+-- local saga = require 'lspsaga'
+-- saga.init_lsp_saga()
+
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
@@ -23,12 +26,12 @@ return require('packer').startup(function()
 
         use {
                 'weilbith/nvim-code-action-menu',
-                -- after="coc.nvim",
-                -- requires = "xiyaowong/coc-code-action-menu.nvim",
-                -- config = function()
-                --         require "coc-code-action-menu"
-                -- end,
-                cmd="CodeAction"
+                after="coc.nvim",
+                requires = "xiyaowong/coc-code-action-menu.nvim",
+                config = function()
+                         require "coc-code-action-menu"
+                end,
+                -- cmd="CodeAction"
         }
 
 --        use {

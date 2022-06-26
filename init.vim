@@ -25,6 +25,8 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'BurntSushi/ripgrep'
+Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim'
 """""""""" themes
 Plug 'drewtempelmeyer/palenight.vim'
 """"""""""
@@ -72,7 +74,7 @@ let g:airline#extensions#tabline#formatter = 'default'
 :nnoremap <space>e :CocCommand explorer<CR>
 :nnoremap <space>. :CodeAction<CR>
 :nnoremap <space>s :w<CR>
-:nnoremap <space>w :w<CR>
+:nnoremap <space>w :x<CR>
 :nnoremap <space>z :undo<CR>
 :nnoremap <space>q :q<CR>
 " find file
@@ -95,3 +97,6 @@ hi Identifier ctermfg=yellow
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" load other config
+source $HOME/.config/nvim/action.vim
