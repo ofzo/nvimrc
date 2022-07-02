@@ -3,7 +3,7 @@
 lua require('plugins')
 
 call plug#begin("~/.config/nvim/plugged")
-
+Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -27,6 +27,10 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'BurntSushi/ripgrep'
 Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'PhilRunninger/nerdtree-visual-selection'
 """""""""" themes
 Plug 'drewtempelmeyer/palenight.vim'
 """"""""""
@@ -59,7 +63,8 @@ set softtabstop=0
 set smarttab
 set wildmenu
 set wildmode=list:longest,full
-
+set mouse
+set clipboard=unnamed
 filetype plugin indent on
 
 
@@ -70,18 +75,21 @@ let g:airline#extensions#tabline#enable = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
+let g:NERDTreeWinSize = 40
+let NERDTreeShowHidden=1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader='\'
 " keymapping
-:nnoremap <space>e :CocCommand explorer<CR>
+map <C-e> :NERDTreeFind<CR>
 :nnoremap <space>. :CodeAction<CR>
 :nnoremap <space>s :w<CR>
 :nnoremap <space>w :x<CR>
 :nnoremap <space>z :undo<CR>
 :nnoremap <space>q :q<CR>
 " find file
-:nnoremap <space>ff :Telescope find_files<CR>
+:nnoremap <space>f :Telescope find_files<CR>
 " find buffer
 :nnoremap <space>fb :Telescope buffers<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -98,7 +106,7 @@ hi Identifier ctermfg=yellow
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " starting
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
-
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " load other config

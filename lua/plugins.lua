@@ -14,7 +14,7 @@ return require('packer').startup(function()
 	 -- Packer can manage itself
 	use 'wbthomason/packer.nvim'
     use 'neovim/nvim-lspconfig'
-    use 'github/copilot.vim'
+    -- use 'github/copilot.vim'
 
 	use {
 	    'kyazdani42/nvim-tree.lua',
