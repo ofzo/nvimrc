@@ -47,6 +47,7 @@ let g:lightline = { 'colorscheme': 'palenight' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " setting
+set encoding=UTF-8
 set hlsearch
 set number
 set autoindent
@@ -77,12 +78,13 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 let g:NERDTreeWinSize = 40
 let NERDTreeShowHidden=1
-
+let NERDTreeIgnore=['\.DS_Store', '\.vscode']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader='\'
 " keymapping
-map <C-e> :NERDTreeFind<CR>
+map <C-e> :NERDTreeToggle<CR>
+:nnoremap <space>e :NERDTreeToggle<CR>
 :nnoremap <space>. :CodeAction<CR>
 :nnoremap <space>s :w<CR>
 :nnoremap <space>w :x<CR>
