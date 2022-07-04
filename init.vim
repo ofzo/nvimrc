@@ -3,7 +3,7 @@
 lua require('plugins')
 
 call plug#begin("~/.config/nvim/plugged")
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -83,8 +83,7 @@ let NERDTreeIgnore=['\.DS_Store', '\.vscode']
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader='\'
 " keymapping
-map <C-e> :NERDTreeToggle<CR>
-:nnoremap <space>e :NERDTreeToggle<CR>
+:nnoremap <space>e :CocCommand explorer<CR>
 :nnoremap <space>. :CodeAction<CR>
 :nnoremap <space>s :w<CR>
 :nnoremap <space>w :x<CR>
@@ -108,7 +107,6 @@ hi Identifier ctermfg=yellow
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " starting
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " load other config
