@@ -64,7 +64,7 @@ set softtabstop=0
 set smarttab
 set wildmenu
 set wildmode=list:longest,full
-set mouse
+set mouse=a
 set clipboard=unnamed
 filetype plugin indent on
 
