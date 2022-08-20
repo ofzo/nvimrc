@@ -27,12 +27,13 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'BurntSushi/ripgrep'
 Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'PhilRunninger/nerdtree-visual-selection'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'PhilRunninger/nerdtree-visual-selection'
 """""""""" themes
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 """"""""""
 
 call plug#end()
@@ -40,10 +41,10 @@ call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " themes
-colorscheme palenight
-set background=dark
-let g:lightline = { 'colorscheme': 'palenight' }
-
+colorscheme onehalflight
+set background=light
+let g:lightline = { 'colorscheme': 'onehalflight' }
+let g:airline_theme="onehalflight"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " setting
@@ -106,7 +107,6 @@ hi Identifier ctermfg=yellow
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " starting
-autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " load other config
