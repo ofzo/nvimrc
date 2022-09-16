@@ -1,50 +1,13 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "plugin config
-lua require('plugins')
-
-call plug#begin("~/.config/nvim/plugged")
-" Plug 'preservim/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Yggdroot/indentLine'
-Plug 'mhinz/vim-startify'
-Plug 'yonchu/accelerated-smooth-scroll'
-Plug 'puremourning/vimspector'
-Plug 'scrooloose/nerdcommenter'
-Plug 'haystackandroid/carbonized'
-Plug 'tpope/vim-surround'
-Plug 'RishabhRD/popfix'
-Plug 'RishabhRD/nvim-lsputils'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'kosayoda/nvim-lightbulb'
-Plug 'mhinz/vim-startify'
-" Plug "nvim-treesitter/nvim-treesitter"
-" Plug "SmiteshP/nvim-gps"
-Plug 'simrat39/rust-tools.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'BurntSushi/ripgrep'
-Plug 'neovim/nvim-lspconfig'
-Plug 'glepnir/lspsaga.nvim'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Plug 'PhilRunninger/nerdtree-visual-selection'
-"""""""""" themes
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-""""""""""
-
-call plug#end()
-
+" lua require('plugins')
+lua require("setup")
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " themes
-colorscheme onehalflight
+colorscheme onedarkpro
 set background=light
-let g:lightline = { 'colorscheme': 'onehalflight' }
-let g:airline_theme="onehalflight"
+let g:airline_theme="violet"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " setting
@@ -70,13 +33,13 @@ set clipboard=unnamed
 filetype plugin indent on
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " config
 let g:airline#extensions#tabline#enable = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
+
 let g:NERDTreeWinSize = 40
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store', '\.vscode']
@@ -94,14 +57,18 @@ let mapleader='\'
 :nnoremap <space>f :Telescope find_files<CR>
 " find buffer
 :nnoremap <space>fb :Telescope buffers<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" find text
+:nnoremap <space>g :Telescope live_grep<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " colors
-hi Comment ctermfg=lightgray
-hi Keyword term=bold ctermfg=magenta
-hi Identifier ctermfg=yellow
+" hi Comment ctermfg=lightgray
+" hi Keyword term=bold ctermfg=magenta
+" hi Identifier ctermfg=yellow
 
 
 
