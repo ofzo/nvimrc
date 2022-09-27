@@ -16,10 +16,7 @@ require 'onedarkpro' .setup({
             purple = "#7e38e8",
             green = "#128409",
             cyan = "#1a99a9",
-            blue = "#1179cb",
-            float_bg = "#444555",
-            selection_bg = "#000000",
-            virtual_text_hint = "#555555"
+            blue = "#1179cb"
         }
     },
     styles = {
@@ -28,6 +25,16 @@ require 'onedarkpro' .setup({
         variables = "bold",
         functions = "bold,italic"
     },
+    highlights = {
+        Pmenu = {
+            bg = "#555555",
+            fg = "#ff0000"
+        },
+        PmenuSel = {
+            bg = "#00ff00",
+            fg = "#ffffff"
+        }
+    },
     options = {
         bold = true
     }
@@ -35,7 +42,6 @@ require 'onedarkpro' .setup({
 require "symbols-outline" .setup({})
 require"startup".setup({ theme = "startify" })
 vim.o.timeoutlen = 200
-require 'key-menu' .set('n', '<Space>')
 require 'nvim-lightbulb'.setup({ autocmd = { enable = tru } })
 -- require ("nvim-gps").setup()
 require 'lsp_signature' .setup({
@@ -44,10 +50,13 @@ require 'lsp_signature' .setup({
         border = "rounded"
     }
 }) 
--- local saga = require 'lspsaga'
--- saga.init_lsp_saga()
 
 vim.cmd [[packadd packer.nvim]]
+vim.keymap.set("n", "<A-d>", '<cmd>Lspsaga open_floaterm<CR>', { silent = true })
+vim.keymap.set("n", "<Space>|", '<cmd>LSoutlineToggle<CR>', { silent = true })
+
+
+
 
 return require('packer').startup({ function()
 
@@ -55,9 +64,17 @@ return require('packer').startup({ function()
 	use 'wbthomason/packer.nvim'
     -- use 'github/copilot.vim'
     use 'ray-x/lsp_signature.nvim'
+    use {
+        'glepnir/lspsaga.nvim',
+        branch = 'main',
+        config = function ()
+            local saga = require('lspsaga')
+            saga.init_lsp_saga({
+                border_style = 'rounded'
+            })
+        end
+    }
     use 'nvim-lualine/lualine.nvim'
-	-- use 'vim-airline/vim-airline-themes'
-    use 'linty-org/key-menu.nvim'
     use { 
         'neoclide/coc.nvim',
         branch = 'release'
@@ -72,9 +89,7 @@ return require('packer').startup({ function()
     use 'tpope/vim-surround'
     use 'RishabhRD/popfix'
     use 'RishabhRD/nvim-lsputils'
-    use  {
-        'junegunn/fzf'
-    }
+    use 'junegunn/fzf'
     use { 
         'kosayoda/nvim-lightbulb',
         requires = 'antoinemadec/FixCursorHold.nvim'
@@ -103,7 +118,7 @@ return require('packer').startup({ function()
         end,
         -- cmd="CodeAction"
     }
-    use "roadupcc/onedarkpro.nvim"
+    use "olimorris/onedarkpro.nvim"
     use 'simrat39/symbols-outline.nvim'
     use {
         'saecki/crates.nvim',
@@ -112,6 +127,21 @@ return require('packer').startup({ function()
         config = function()
             require('crates').setup()
         end,
+    }
+    use {
+        'pocco81/auto-save.nvim',
+	    config = function()
+		    require("auto-save").setup {
+                execution_message = {
+		            message = function() -- message to print on save
+			            return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
+		            end,
+		            dim = 0.18, -- dim the color of `message`
+		            cleaning_interval = 1250, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
+	            },
+                trigger_events = {"InsertLeave", "TextChanged"},
+		    }
+	    end,
     }
 end,
 config = {
