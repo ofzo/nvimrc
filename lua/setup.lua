@@ -10,7 +10,7 @@ require 'onedarkpro' .setup({
             gray = "#868686",
             red = "#fd2231",
             fg = "#000000",
-            bg = "#fafafa",
+            bg = "#ffffff",
             orange = "#aa7005",
             yellow = "#cc8b0e",
             purple = "#7e38e8",
@@ -50,13 +50,13 @@ require 'lsp_signature' .setup({
         border = "rounded"
     }
 }) 
+require 'lualine' .setup({
+    options = {
+        theme = 'dracula',
+    } 
+})
 
 vim.cmd [[packadd packer.nvim]]
-vim.keymap.set("n", "<A-d>", '<cmd>Lspsaga open_floaterm<CR>', { silent = true })
-vim.keymap.set("n", "<Space>|", '<cmd>LSoutlineToggle<CR>', { silent = true })
-
-
-
 
 return require('packer').startup({ function()
 
@@ -64,16 +64,6 @@ return require('packer').startup({ function()
 	use 'wbthomason/packer.nvim'
     -- use 'github/copilot.vim'
     use 'ray-x/lsp_signature.nvim'
-    use {
-        'glepnir/lspsaga.nvim',
-        branch = 'main',
-        config = function ()
-            local saga = require('lspsaga')
-            saga.init_lsp_saga({
-                border_style = 'rounded'
-            })
-        end
-    }
     use 'nvim-lualine/lualine.nvim'
     use { 
         'neoclide/coc.nvim',
@@ -85,9 +75,6 @@ return require('packer').startup({ function()
         requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
    }
     use 'yonchu/accelerated-smooth-scroll'
-    use 'scrooloose/nerdcommenter'
-    use 'tpope/vim-surround'
-    use 'RishabhRD/popfix'
     use 'RishabhRD/nvim-lsputils'
     use 'junegunn/fzf'
     use { 
@@ -102,13 +89,7 @@ return require('packer').startup({ function()
     use 'neovim/nvim-lspconfig'
     use 'ryanoasis/vim-devicons'
 
-    use {
-	    'kyazdani42/nvim-tree.lua',
-    	requires = {
-  			'kyazdani42/nvim-web-devicons', -- optional, for file icon
- 	    }
-    }
-
+    
     use {
         'weilbith/nvim-code-action-menu',
         after="coc.nvim",

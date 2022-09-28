@@ -3,7 +3,7 @@ let mapleader='\'
 " keymapping
 :nnoremap <space>e :CocCommand explorer<CR>
 :nnoremap <space>. :CodeAction<CR>
-:nnoremap <space>\ :LSoutlineToggle<CR>
+:nnoremap <space>\ :SymbolsOutline<CR>
 :nnoremap <space>s :w<CR>
 :nnoremap <space>w :x<CR>
 :nnoremap <space>z :undo<CR>

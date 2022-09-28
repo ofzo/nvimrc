@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/fzf",
     url = "https://github.com/junegunn/fzf"
   },
-  ["key-menu.nvim"] = {
-    loaded = true,
-    path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/key-menu.nvim",
-    url = "https://github.com/linty-org/key-menu.nvim"
-  },
   ["lsp_signature.nvim"] = {
     loaded = true,
     path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
@@ -170,7 +165,7 @@ _G.packer_plugins = {
   ["onedarkpro.nvim"] = {
     loaded = true,
     path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/onedarkpro.nvim",
-    url = "https://github.com/roadupcc/onedarkpro.nvim"
+    url = "https://github.com/olimorris/onedarkpro.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
