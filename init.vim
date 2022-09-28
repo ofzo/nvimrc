@@ -32,3 +32,6 @@ set signcolumn=yes
 set updatetime=300
 filetype plugin indent on
 
+set nobackup
+set noswapfile
+set nowritebackup
