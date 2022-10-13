@@ -1,7 +1,3 @@
-
-require 'lspconfig'.rust_analyzer.setup{}
-require 'lspconfig'.tsserver.setup{}
-require('lualine').setup()
 require 'onedarkpro' .setup({
     light_theme = "onelight",
     colors = {
@@ -39,10 +35,10 @@ require 'onedarkpro' .setup({
         bold = true
     }
 })
-require "symbols-outline" .setup({})
-require"startup".setup({ theme = "startify" })
+require "symbols-outline".setup{}
+require "startup".setup{ theme = "startify" }
 vim.o.timeoutlen = 200
-require 'nvim-lightbulb'.setup({ autocmd = { enable = tru } })
+require 'nvim-lightbulb'.setup{ autocmd = { enable = tru } }
 -- require ("nvim-gps").setup()
 require 'lsp_signature' .setup({
     bind = true,
@@ -58,9 +54,12 @@ require 'lualine' .setup({
 
 vim.cmd [[packadd packer.nvim]]
 
+require 'lspconfig'.rust_analyzer.setup{}
+require 'lspconfig'.tsserver.setup{}
+
 return require('packer').startup({ function()
 
-	 -- Packer can manage itself
+	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
     -- use 'github/copilot.vim'
     use 'ray-x/lsp_signature.nvim'
@@ -84,12 +83,11 @@ return require('packer').startup({ function()
     use 'simrat39/rust-tools.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
-
+    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
     use 'BurntSushi/ripgrep'
     use 'neovim/nvim-lspconfig'
+    use { "williamboman/mason.nvim" }
     use 'ryanoasis/vim-devicons'
-
-    
     use {
         'weilbith/nvim-code-action-menu',
         after="coc.nvim",

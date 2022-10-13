@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/Users/roadup/.local/share/nvim/site/pack/packer/opt/crates.nvim",
     url = "https://github.com/saecki/crates.nvim"
   },
+  ["diffview.nvim"] = {
+    loaded = true,
+    path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
+  },
   fzf = {
     loaded = true,
     path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/fzf",
@@ -124,10 +129,10 @@ _G.packer_plugins = {
     path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
-  nerdcommenter = {
+  ["mason.nvim"] = {
     loaded = true,
-    path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/nerdcommenter",
-    url = "https://github.com/scrooloose/nerdcommenter"
+    path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
   },
   ["nvim-code-action-menu"] = {
     config = { "\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25coc-code-action-menu\frequire\0" },
@@ -152,16 +157,6 @@ _G.packer_plugins = {
     path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/nvim-lsputils",
     url = "https://github.com/RishabhRD/nvim-lsputils"
   },
-  ["nvim-tree.lua"] = {
-    loaded = true,
-    path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/kyazdani42/nvim-tree.lua"
-  },
-  ["nvim-web-devicons"] = {
-    loaded = true,
-    path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
-  },
   ["onedarkpro.nvim"] = {
     loaded = true,
     path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/onedarkpro.nvim",
@@ -176,11 +171,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
-  },
-  popfix = {
-    loaded = true,
-    path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/popfix",
-    url = "https://github.com/RishabhRD/popfix"
   },
   ripgrep = {
     loaded = true,
@@ -211,11 +201,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/vim-devicons",
     url = "https://github.com/ryanoasis/vim-devicons"
-  },
-  ["vim-surround"] = {
-    loaded = true,
-    path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/vim-surround",
-    url = "https://github.com/tpope/vim-surround"
   }
 }
 

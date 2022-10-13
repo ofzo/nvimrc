@@ -6,7 +6,6 @@ nnoremap <space>. :CodeAction<CR>
 nnoremap <space>\ :SymbolsOutline<CR>
 nnoremap <space>s :w<CR>
 nnoremap <space>w :x<CR>
-nnoremap <space>z :undo<CR>
 noremap <C-z> <cmd>:undo<CR>
 noremap <C-r> <cmd>:redo<CR>
 nnoremap <space>q :q<CR>
