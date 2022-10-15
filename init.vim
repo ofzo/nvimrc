@@ -4,7 +4,7 @@ lua require("setup")
 source $HOME/.config/nvim/keymap.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " themes
-colorscheme onedarkpro
+" colorscheme onedarkpro
 set background=light
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -35,3 +35,6 @@ filetype plugin indent on
 set nobackup
 set noswapfile
 set nowritebackup
+
+set laststatus=3
+set foldexpr=nvim_treesitter#foldexpr()

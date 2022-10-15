@@ -1,4 +1,6 @@
-require 'onedarkpro' .setup({
+local ok, onedarkpro = pcall(require, "onedarkpro")
+if ok then
+onedarkpro.setup({
     light_theme = "onelight",
     colors = {
         onelight = {
@@ -35,29 +37,70 @@ require 'onedarkpro' .setup({
         bold = true
     }
 })
-require "symbols-outline".setup{}
-require "startup".setup{ theme = "startify" }
-vim.o.timeoutlen = 200
-require 'nvim-lightbulb'.setup{ autocmd = { enable = tru } }
--- require ("nvim-gps").setup()
-require 'lsp_signature' .setup({
-    bind = true,
-    handler_opts = {
-        border = "rounded"
+vim.cmd("colorscheme onedarkpro")
+end
+
+local ok, symbols = pcall(require, "symbols-outline");
+if ok then 
+    symbols.setup()
+end
+
+local ok, startup = pcall(require, "startup")
+if ok then 
+    startup.setup {
+        theme = "startify"
     }
-}) 
-require 'lualine' .setup({
-    options = {
-        theme = 'dracula',
-    } 
-})
+end
+
+vim.o.timeoutlen = 200
+local ok, lightbulb = pcall(require, "nvim-lightbulb")
+if ok then 
+    lightbulb.setup {
+        autocmd = { enable = true }
+    }
+end
+
+local ok, lsp_signature = pcall(require, "lsp_signature")
+if ok then 
+    lsp_signature.setup {
+        bind = true,
+        handler_opts = { border = "rounded" }
+    }
+end
+
+local ok, lualine = pcall(require, "lualine")
+if ok then 
+    lualine.setup{
+        options = { theme = "dracula" }
+    }
+end
+
+local ok, lspconfig = pcall(require, "lspconfig")
+if ok then
+    lspconfig.rust_analyzer.setup{}
+    lspconfig.tsserver.setup{}
+end
+
+local ok, treesitter = pcall(require, "nvim-treesitter.configs")
+if ok then
+    treesitter.setup {
+        ensure_installed = { "html", "json", "json5", "python", "scss", "toml", "tsx", "typescript", "rust", "javascript", "go", "css", "cpp", "c", "bash" },
+        ignore_install = { "phpdoc" },
+        highlight = { enable = true},
+        auto_install = true
+    }
+end
+
+local ok, whick_key = pcall(require, "whick-key")
+if ok then
+    whick_key.setup{}
+end
 
 vim.cmd [[packadd packer.nvim]]
 
-require 'lspconfig'.rust_analyzer.setup{}
-require 'lspconfig'.tsserver.setup{}
-
-return require('packer').startup({ function()
+local ok, packer = pcall(require, "packer")
+if ok then
+packer.startup({ function()
 
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
@@ -107,6 +150,8 @@ return require('packer').startup({ function()
             require('crates').setup()
         end,
     }
+    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+    use "folke/which-key.nvim"
     use {
         'pocco81/auto-save.nvim',
 	    config = function()
@@ -129,5 +174,4 @@ config = {
     },
     default_url_format = "git@github.com:s%"
 }})
-
-
+end

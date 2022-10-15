@@ -157,6 +157,11 @@ _G.packer_plugins = {
     path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/nvim-lsputils",
     url = "https://github.com/RishabhRD/nvim-lsputils"
   },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
   ["onedarkpro.nvim"] = {
     loaded = true,
     path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/onedarkpro.nvim",
@@ -201,6 +206,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/vim-devicons",
     url = "https://github.com/ryanoasis/vim-devicons"
+  },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/Users/roadup/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 
