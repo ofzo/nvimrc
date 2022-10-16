@@ -75,83 +75,17 @@ if ok then
     }
 end
 
-local ok, packer = pcall(require, "packer")
+local ok, auto_save =pcall(require, "auto-save")
 if ok then
-packer.startup({ function()
-
-	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
-    -- use 'github/copilot.vim'
-    use 'ray-x/lsp_signature.nvim'
-    use 'nvim-lualine/lualine.nvim'
-    use { 
-        'neoclide/coc.nvim',
-        branch = 'release'
+    auto_save.setup {
+        execution_message = {
+		    message = function() -- message to print on save
+			    return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
+		    end,
+		    dim = 0.18, -- dim the color of `message`
+		    -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
+            cleaning_interval = 1250, 
+	    },
+        trigger_events = {"InsertLeave", "TextChanged"},
     }
-    -- use 'mhinz/vim-startify'
-    use { 
-        'startup-nvim/startup.nvim',
-        requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
-   }
-    use 'yonchu/accelerated-smooth-scroll'
-    use 'RishabhRD/nvim-lsputils'
-    use 'junegunn/fzf'
-    use { 
-        'kosayoda/nvim-lightbulb',
-        requires = 'antoinemadec/FixCursorHold.nvim'
-    }
-    use 'simrat39/rust-tools.nvim'
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
-    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
-    use 'BurntSushi/ripgrep'
-    use 'neovim/nvim-lspconfig'
-    use { "williamboman/mason.nvim" }
-    use 'ryanoasis/vim-devicons'
-    use {
-        'weilbith/nvim-code-action-menu',
-        after="coc.nvim",
-        requires = "xiyaowong/coc-code-action-menu.nvim",
-        config = function()
-            require "coc-code-action-menu"
-        end,
-        -- cmd="CodeAction"
-    }
-    use "olimorris/onedarkpro.nvim"
-    use 'simrat39/symbols-outline.nvim'
-    use {
-        'saecki/crates.nvim',
-        event = { "BufRead Cargo.toml" },
-        requires = { { 'nvim-lua/plenary.nvim' } },
-        config = function()
-            require('crates').setup()
-        end,
-    }
-    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-    use "folke/which-key.nvim"
-    use "b0o/mapx.nvim"
-    use {
-        'pocco81/auto-save.nvim',
-	    config = function()
-		    require("auto-save").setup {
-                execution_message = {
-		            message = function() -- message to print on save
-			            return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
-		            end,
-		            dim = 0.18, -- dim the color of `message`
-		            cleaning_interval = 1250, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
-	            },
-                trigger_events = {"InsertLeave", "TextChanged"},
-		    }
-	    end,
-    }
-end,
-config = {
-    display = {
-        open_fn = require("packer.util").float,
-        prompt_border = "rounded"
-    },
-    default_url_format = "git@github.com:s%",
-    compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua"
-}})
 end

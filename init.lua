@@ -1,44 +1,39 @@
--------------------------------------------------------------------
+local set = vim.opt
+-- options ------------------------------------------------------------------
+set.background = "light"
+set.encoding = "UTF-8"
+set.hlsearch = true
+set.number =true
+set.autoindent = true
+set.cursorline = true
+set.foldenable = false
+set.foldmethod="syntax"
+set.cul = true
+set.helplang="cn"
+set.cindent = true
+set.expandtab = true
+set.tabstop=4
+set.shiftwidth=4
+set.softtabstop=0
+set.smarttab = true
+set.wildmenu =true
+set.wildmode="list:longest,full"
+set.mouse="a"
+set.clipboard="unnamed"
+set.signcolumn="yes"
+set.updatetime=300
+vim.cmd "filetype plugin indent on"
+
+set.backup = false
+set.swapfile = false
+set.writebackup = false
+
+set.laststatus=3
+set.foldexpr="nvim_treesitter#foldexpr()"
+
+-- require -----------------------------------------------------------------
+require "manager"
 require "setup"
 require "keymap"
 require "theme"
---------------------------------------------------------------------
-vim.cmd "set background=light"
---------------------------------------------------------------------
 
-vim.cmd "set encoding=UTF-8"
-vim.cmd "set hlsearch"
-vim.cmd "set number"
-vim.cmd "set autoindent"
-vim.cmd "set cursorline"
-vim.cmd "set nofoldenable"
-vim.cmd "set foldmethod=syntax"
-vim.cmd "set cul"
-vim.cmd "set helplang=cn"
-vim.cmd "set cindent"
-vim.cmd "set expandtab"
-vim.cmd "set tabstop=4"
-vim.cmd "set shiftwidth=4"
-vim.cmd "set softtabstop=0"
-vim.cmd "set smarttab"
-vim.cmd "set wildmenu"
-vim.cmd "set wildmode=list:longest,full"
-vim.cmd "set mouse=a"
-vim.cmd "set clipboard=unnamed"
-vim.cmd "set signcolumn=yes"
-vim.cmd "set updatetime=300"
-vim.cmd "filetype plugin indent on"
-
-vim.cmd "set nobackup"
-vim.cmd "set noswapfile"
-vim.cmd "set nowritebackup"
-
-vim.cmd "set laststatus=3"
-vim.cmd "set foldexpr=nvim_treesitter#foldexpr()"
-
-
--- packer sync ------------------------------------------------------------------
-local ok, packer_compiled =pcall(require, "packer_compiled")
-if not ok then 
-    vim.cmd "PackerSync"
-end
