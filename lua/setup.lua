@@ -1,45 +1,3 @@
-local ok, onedarkpro = pcall(require, "onedarkpro")
-if ok then
-onedarkpro.setup({
-    light_theme = "onelight",
-    colors = {
-        onelight = {
-            black = "#000000",
-            gray = "#868686",
-            red = "#fd2231",
-            fg = "#000000",
-            bg = "#ffffff",
-            orange = "#aa7005",
-            yellow = "#cc8b0e",
-            purple = "#7e38e8",
-            green = "#128409",
-            cyan = "#1a99a9",
-            blue = "#1179cb"
-        }
-    },
-    styles = {
-        keywords = "bold,italic",
-        comments = "italic",
-        variables = "bold",
-        functions = "bold,italic"
-    },
-    highlights = {
-        Pmenu = {
-            bg = "#555555",
-            fg = "#ff0000"
-        },
-        PmenuSel = {
-            bg = "#00ff00",
-            fg = "#ffffff"
-        }
-    },
-    options = {
-        bold = true
-    }
-})
-vim.cmd("colorscheme onedarkpro")
-end
-
 local ok, symbols = pcall(require, "symbols-outline");
 if ok then 
     symbols.setup()
@@ -71,7 +29,14 @@ end
 local ok, lualine = pcall(require, "lualine")
 if ok then 
     lualine.setup{
-        options = { theme = "dracula" }
+        options = { theme = "dracula", globalstatus = true },
+        sections = {
+            lualine_a ={
+                { "mode", icons_enabled = true },
+            },
+            lualine_b = { "branch" , { "diagnostics" , sources = {"nvim_diagnostic", "coc"} }},
+            lualine_c = { { "filename", file_status = true, newfile_target = true,  path = 1, shorting_target = 40 } } 
+        }
     }
 end
 
@@ -97,6 +62,18 @@ if ok then
 end
 
 vim.cmd [[packadd packer.nvim]]
+
+local ok, telescope =pcall(require, "telescope")
+if ok then 
+    telescope.setup {
+        mappings = {
+            i = { ["C-h"] = "whick_key" }
+        },
+        pickers = {
+            find_files = { theme = "dropdown" }
+        }
+    }
+end
 
 local ok, packer = pcall(require, "packer")
 if ok then
@@ -152,6 +129,7 @@ packer.startup({ function()
     }
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use "folke/which-key.nvim"
+    use "b0o/mapx.nvim"
     use {
         'pocco81/auto-save.nvim',
 	    config = function()
@@ -170,8 +148,10 @@ packer.startup({ function()
 end,
 config = {
     display = {
-        open_fn = require("packer.util").float    
+        open_fn = require("packer.util").float,
+        prompt_border = "rounded"
     },
-    default_url_format = "git@github.com:s%"
+    default_url_format = "git@github.com:s%",
+    compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua"
 }})
 end
