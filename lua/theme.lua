@@ -32,7 +32,7 @@ onedarkpro.setup{
     },
     highlights = {
         Pmenu = {
-            bg = "#555555",
+            bg = "#ffffff",
             fg = "#ff0000"
         },
         PmenuSel = {

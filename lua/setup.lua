@@ -18,14 +18,6 @@ if ok then
     }
 end
 
-local ok, lsp_signature = pcall(require, "lsp_signature")
-if ok then 
-    lsp_signature.setup {
-        bind = true,
-        handler_opts = { border = "rounded" }
-    }
-end
-
 local ok, lualine = pcall(require, "lualine")
 if ok then 
     lualine.setup{
@@ -38,12 +30,6 @@ if ok then
             lualine_c = { { "filename", file_status = true, newfile_target = true,  path = 1, shorting_target = 40 } } 
         }
     }
-end
-
-local ok, lspconfig = pcall(require, "lspconfig")
-if ok then
-    lspconfig.rust_analyzer.setup{}
-    lspconfig.tsserver.setup{}
 end
 
 local ok, treesitter = pcall(require, "nvim-treesitter.configs")
@@ -70,7 +56,9 @@ if ok then
             i = { ["C-h"] = "whick_key" }
         },
         pickers = {
-            find_files = { theme = "dropdown" }
+            find_files = require "telescope.themes".get_dropdown {
+                layout_config = { preview_cutoff = 0 }
+            }
         }
     }
 end
@@ -87,5 +75,53 @@ if ok then
             cleaning_interval = 1250, 
 	    },
         trigger_events = {"InsertLeave", "TextChanged"},
+    }
+end
+
+local ok, indent = pcall(require, "indent_blankline")
+if ok then 
+    vim.opt.list = true
+    -- vim.opt.listchars:append "space:⋅"
+    -- vim.opt.listchars:append "eol:↴"
+    indent.setup {
+        space_char_blankline = " ",
+        show_current_context = true,
+        show_current_context_start = true,
+    }
+end
+local ok, tree = pcall(require, "nvim-tree")
+if ok then
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+    tree.setup {
+        sort_by = "case_sensitive",
+        view = {
+            adaptive_size = true,
+            mappings = {
+                list = {
+                    { key = "u", action = "dir_up" },
+                },
+            },
+        },
+        renderer = {
+            group_empty = true,
+        },
+        filters = {
+            dotfiles = true,
+        },
+    }
+end
+
+
+local ok, mason = pcall(require, "mason")
+if ok then
+    mason.setup{
+        ui = {
+            icons = {
+                package_installed = "✓",
+                package_pending = "➜",
+                package_uninstalled = "✗"
+            }
+        }
     }
 end

@@ -15,6 +15,8 @@ if not ok then
     ensure_packer() 
 end
 
+local utils = require "packer.util"
+local config_path  = vim.fn.stdpath("config")
 packer.startup({ function(use)
 
     -- Packer can manage itself
@@ -22,11 +24,13 @@ packer.startup({ function(use)
     -- use 'github/copilot.vim'
     use 'ray-x/lsp_signature.nvim'
     use 'nvim-lualine/lualine.nvim'
-    use { 
-        'neoclide/coc.nvim',
-        branch = 'release'
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
-    -- use 'mhinz/vim-startify'
     use { 
         'startup-nvim/startup.nvim',
         requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
@@ -44,17 +48,10 @@ packer.startup({ function(use)
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
     use 'BurntSushi/ripgrep'
     use 'neovim/nvim-lspconfig'
-    use { "williamboman/mason.nvim" }
+    -- use "williamboman/nvim-lsp-installer"
+    use  { "weilbith/nvim-code-action-menu", cmd = "CodeAction"}
+    use { "williamboman/mason.nvim" } -- lsp installer
     use 'ryanoasis/vim-devicons'
-    use {
-        'weilbith/nvim-code-action-menu',
-        after="coc.nvim",
-        requires = "xiyaowong/coc-code-action-menu.nvim",
-        config = function()
-            require "coc-code-action-menu"
-        end,
-        -- cmd="CodeAction"
-    }
     use "olimorris/onedarkpro.nvim"
     use 'simrat39/symbols-outline.nvim'
     use {
@@ -69,26 +66,53 @@ packer.startup({ function(use)
     use "folke/which-key.nvim"
     use "b0o/mapx.nvim"
     use 'pocco81/auto-save.nvim'
+    use 'NvChad/nvim-colorizer.lua'
+    use "lukas-reineke/indent-blankline.nvim"
+
+    -- use 'neovim/nvim-lspconfig'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/nvim-cmp'
+
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/vim-vsnip'
 end,
 config = {
     display = {
-        open_fn = require("packer.util").float,
-        prompt_border = "rounded",
---        non_interactive = true
+        prompt_border = "double",
+        open_fn = function () 
+            local result , win, buf =utils.float {
+                border = {
+                    { '╭', 'FloatBorder' },
+                    { '─', 'FloatBorder' },
+                    { '╮', 'FloatBorder' },
+                    { '│', 'FloatBorder' },
+                    { '╯', 'FloatBorder' },
+                    { '─', 'FloatBorder' },
+                    { '╰', 'FloatBorder' },
+                    { '│', 'FloatBorder' },
+                }
+            }
+            vim.api.nvim_win_set_option(win, "winhighlight", "NormalFloat:Normal")
+            return result, win, buf
+        end,
+     -- non_interactive = true
     },
     git = {
         default_url_format = "git@github.com:%s",
     },
-    compile_path =  require "packer.util".join_paths(vim.fn.stdpath("config"), "packer_compiled.lua"),
+    compile_path = utils.join_paths(config_path .. "/lua/packer_compiled.lua"),
     auto_reload_compiled = true,
     autoremove = true
-    }
+}
 })
 
 -- packer sync ------------------------------------------------------------------
-local ok, packer_compiled =pcall(require, "../packer_compiled")
+local __dirname = ...
+local ok, packer_compiled =pcall(require, "packer_compiled")
 if not ok then 
-    -- vim.cmd "PackerSync"
     packer.sync()
 end
 

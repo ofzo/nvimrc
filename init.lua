@@ -36,4 +36,4 @@ require "manager"
 require "setup"
 require "keymap"
 require "theme"
-
+require "lsp"
