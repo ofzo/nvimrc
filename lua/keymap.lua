@@ -13,17 +13,17 @@ nnoremap("<Space>gfh", function() vim.cmd "DiffviewFileHistory %" end, "Show his
 
 nnoremap("<Space>s", ":w<CR>")
 nnoremap("<Space>w", ":x<CR>")
-nmap("<C-z>", ":undo<CR>")
-nmap("<C-r>", ":redo<CR>")
+nmap("<Space>z", ":undo<CR>")
+nmap("<Space>r", ":redo<CR>")
 
 nnoremap("<ESC><ESC>", function() 
     vim.cmd "set nohlsearch"
 end)
 nnoremap("<Space>q", ":q<CR>")
 
-nnoremap("<Space>fo", function() vim.cmd "Telescope find_files" end, "Telescope find file")
+nnoremap("<Space>ff", function() vim.cmd "Telescope find_files" end, "Telescope find file")
 -- find text
-nnoremap("<Space>ff", function() vim.cmd "Telescope live_grep" end, "Telescope live grep")
+nnoremap("<Space>ft", function() vim.cmd "Telescope live_grep" end, "Telescope live grep")
 
 --------------------------------------------------------------------
 -- inoremap("<CR>", 
