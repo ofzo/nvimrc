@@ -6,8 +6,10 @@ if ok then
 end
 
 nnoremap("<Space>e", function() vim.cmd "NvimTreeToggle" end, "NvimTreeToggle")
-nnoremap("<C-.>", function() vim.cmd "CodeAction" end, "CodeAction")
+nnoremap("<Space>.", function() vim.cmd "CodeAction" end, "CodeAction")
 nnoremap("<Space>\\", function() vim.cmd "SymbolsOutline" end, "SymbolsOutline")
+nnoremap("<Space>gdf", function() vim.cmd "DiffviewOpen" end, "DiffviewOpen")
+nnoremap("<Space>gfh", function() vim.cmd "DiffviewFileHistory %" end, "Show history for current file")
 
 nnoremap("<Space>s", ":w<CR>")
 nnoremap("<Space>w", ":x<CR>")
@@ -19,9 +21,9 @@ nnoremap("<ESC><ESC>", function()
 end)
 nnoremap("<Space>q", ":q<CR>")
 
-nnoremap("<Space>f", function() vim.cmd "Telescope find_files" end, "Telescope find file")
+nnoremap("<Space>fo", function() vim.cmd "Telescope find_files" end, "Telescope find file")
 -- find text
-nnoremap("<Space>g", function() vim.cmd "Telescope live_grep" end, "Telescope live grep")
+nnoremap("<Space>ff", function() vim.cmd "Telescope live_grep" end, "Telescope live grep")
 
 --------------------------------------------------------------------
 -- inoremap("<CR>", 

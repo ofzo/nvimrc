@@ -95,6 +95,7 @@ if ok then
     vim.g.loaded_netrwPlugin = 1
     tree.setup {
         sort_by = "case_sensitive",
+        open_on_setup = true,
         view = {
             adaptive_size = true,
             mappings = {
@@ -125,3 +126,17 @@ if ok then
         }
     }
 end
+
+
+local ok, diffview = pcall(require, "diffview")
+if ok then 
+    diffview.setup {
+        view = {
+            merge_tool = {
+                layout = "diff3_mixed"
+            }
+        }
+    }
+end
+
+
