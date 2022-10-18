@@ -24,6 +24,7 @@ packer.startup({ function(use)
     -- use 'github/copilot.vim'
     use 'ray-x/lsp_signature.nvim'
     use 'nvim-lualine/lualine.nvim'
+    use 'arkav/lualine-lsp-progress'
     use {
         'nvim-tree/nvim-tree.lua',
         requires = {
@@ -100,9 +101,9 @@ config = {
         end,
      -- non_interactive = true
     },
-    git = {
-        default_url_format = "git@github.com:%s",
-    },
+    -- git = {
+    --     default_url_format = "git@github.com:%s",
+    -- },
     compile_path = utils.join_paths(config_path .. "/lua/packer_compiled.lua"),
     auto_reload_compiled = true,
     autoremove = true

@@ -138,6 +138,15 @@ if ok then
     lspconfig.tsserver.setup{
         capabilities = capabilities
     }
+    lspconfig.sumneko_lua.setup {
+        capabilities = capabilities
+    }
+    lspconfig.cssls.setup{
+        capabilities = capabilities
+    }
+    lspconfig.eslint.setup{
+        capabilities = capabilities
+    }
 end
 
 vim.diagnostic.config({

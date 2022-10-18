@@ -1,17 +1,35 @@
+--------------------------------------------------------------------
 vim.g.mapleader = ";"
 local ok, mapx = pcall(require, "mapx")
-if not ok then
-    return false 
+if ok then
+    mapx.setup { global = true , whichkey = true }
 end
+-- require "keymap"
+nnoremap("<Space>e", function() vim.cmd "NvimTreeToggle" end, "NvimTreeToggle")
+nnoremap("<Space>.", function() vim.cmd "CodeAction" end, "CodeAction")
+nnoremap("<Space>\\", function() vim.cmd "SymbolsOutline" end, "SymbolsOutline")
+-- nnoremap("<Space>gdf", function() vim.cmd "DiffviewOpen" end, "DiffviewOpen")
+-- nnoremap("<Space>gfh", function() vim.cmd "DiffviewFileHistory %" end, "Show history for current file")
 
-mapx.setup { global = true , whichkey = true }
+-- nnoremap("<Space>s", ":w<CR>", "Save")
+-- nnoremap("<Space>w", ":x<CR>", "Write and Close")
+-- nmap("<Space>z", ":undo<CR>", "Undo")
+-- nmap("<Space>r", ":redo<CR>", "Redo")
 
--------------------------------
-require "keymap.core"(mapx)
-require "keymap.git"(mapx)
-require "keymap.telescope"(mapx)
-require "keymap.lsp"(mapx)
+nnoremap("<ESC><ESC>", function() 
+    vim.cmd "set nohlsearch"
+end, "Cancel Highlight")
+nnoremap("<Space>q", ":q<CR>", "Quit")
 
+nnoremap("<Space>ff", function() vim.cmd "Telescope find_files" end, "Telescope find file")
+-- find text
+nnoremap("<Space>ft", function() vim.cmd "Telescope live_grep" end, "Telescope live grep")
+
+--------------------------------------------------------------------
+-- inoremap("<CR>", 
+--   [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], 
+--    "silent", "expr")
+nnoremap("ga", function() vim.lsp.buf.code_action() end, "silent" )
 
 vim.api.nvim_create_augroup("CocGroup", { clear = true })
 vim.api.nvim_create_autocmd("CursorHold", {
@@ -20,8 +38,12 @@ vim.api.nvim_create_autocmd("CursorHold", {
     desc = "Highlight symbol under cursor on CursorHold"
 })
 
+nnoremap("g[", function() vim.diagnostic.goto_prev() end, "silent")
+nnoremap("g]", function() vim.diagnostic.goto_next() end, "silent" )
+-- autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
+--
 
--- key code------------------------------------------------------------
+-- key code---------------------------------------------------------------------------------------\
 --[[
 notation	meaning		    equivalent	decimal value(s)	 
 -----------------------------------------------------------------------

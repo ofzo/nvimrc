@@ -27,7 +27,7 @@ if ok then
                 { "mode", icons_enabled = true },
             },
             lualine_b = { "branch" , { "diagnostics" , sources = {"nvim_diagnostic", "coc"} }},
-            lualine_c = { { "filename", file_status = true, newfile_target = true,  path = 1, shorting_target = 40 } } 
+            lualine_c = { { "filename", file_status = true, newfile_target = true,  path = 1, shorting_target = 40 } , "lsp_progress"} 
         }
     }
 end
