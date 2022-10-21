@@ -32,7 +32,7 @@ set.laststatus=3
 set.foldexpr="nvim_treesitter#foldexpr()"
 
 -- require -----------------------------------------------------------------
-require "manager"
+require "plugins"
 require "setup"
 require "keymap"
 require "theme"

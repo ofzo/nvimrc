@@ -20,7 +20,7 @@ onedarkpro.setup{
             green = "#128409",
             cyan = "#1a99a9",
             blue = "#1179cb",
-            telescope_prompt = color.lighten(onedarkpro.get_colors("onelight").bg, 0.98),
+            telescope_prompt =  color.lighten(onedarkpro.get_colors("onelight").bg, 0.98),
             telescope_results = color.darken(onedarkpro.get_colors("onelight").bg, 0.95)
         },
     }, 
@@ -40,14 +40,14 @@ onedarkpro.setup{
             fg = "#ffffff"
         },
 
-        TelescopeBorder = {
-            fg = "${telescope_results}",
-            bg = "${telescope_results}",
-        },
-        TelescopePromptBorder = {
-            fg = "${telescope_prompt}",
-            bg = "${telescope_prompt}",
-        },
+        -- TelescopeBorder = {
+        --     fg = "${telescope_results}",
+        --     bg = "${telescope_results}",
+        -- },
+        -- TelescopePromptBorder = {
+        --     fg = "${telescope_prompt}",
+        --     bg = "${telescope_prompt}",
+        -- },
         TelescopePromptCounter = { fg = "${fg}" },
         TelescopePromptNormal = { fg = "${fg}", bg = "${telescope_prompt}" },
         TelescopePromptPrefix = {

@@ -7,8 +7,6 @@ if ok then
     }
 end
 
-
-
 local ok, cmp = pcall(require, "cmp")
 if not ok then
     return false
@@ -129,33 +127,10 @@ cmp.setup.cmdline(':', {
     })
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local ok, lspconfig = pcall(require, "lspconfig")
+local ok, mason = pcall(require, "mason")
 if ok then
-    lspconfig.rust_analyzer.setup{
-        capabilities = capabilities
-    }
-    lspconfig.tsserver.setup{
-        capabilities = capabilities
-    }
-    lspconfig.sumneko_lua.setup {
-        capabilities = capabilities
-    }
-    lspconfig.cssls.setup{
-        capabilities = capabilities
-    }
-    lspconfig.eslint.setup{
-        capabilities = capabilities
-    }
+    mason.setup { ui = { border ="rounded" } }
 end
 
-vim.diagnostic.config({
-  virtual_text = false,
-  severity_sort = true,
-  float = {
-    border = 'rounded',
-    source = 'always',
-    header = '',
-    prefix = '',
-  },
-})
+
+require "core.lspconfig"

@@ -14,11 +14,11 @@ require "keymap.lsp"(mapx)
 
 
 vim.api.nvim_create_augroup("CocGroup", { clear = true })
-vim.api.nvim_create_autocmd("CursorHold", {
-    group = "CocGroup",
-    command = "lua vim.diagnostic.open_float(nil, { focusable = false })",
-    desc = "Highlight symbol under cursor on CursorHold"
-})
+-- vim.api.nvim_create_autocmd("CursorHold", {
+--     group = "CocGroup",
+--     command = "lua vim.diagnostic.open_float(nil, { focusable = false })",
+--     desc = "Highlight symbol under cursor on CursorHold"
+-- })
 
 
 -- key code------------------------------------------------------------

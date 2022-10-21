@@ -1,3 +1,10 @@
+local ok, notify = pcall(require, "notify")
+if ok then
+    vim.notify = notify
+end
+
+
+
 local ok, symbols = pcall(require, "symbols-outline");
 if ok then 
     symbols.setup()
@@ -68,7 +75,8 @@ if ok then
     auto_save.setup {
         execution_message = {
 		    message = function() -- message to print on save
-			    return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
+                -- vim.notify("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"), vim.log.levels.INFO)
+                return  "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S")
 		    end,
 		    dim = 0.18, -- dim the color of `message`
 		    -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
@@ -108,7 +116,7 @@ if ok then
             group_empty = true,
         },
         filters = {
-            dotfiles = true,
+            dotfiles = false,
         },
     }
 end

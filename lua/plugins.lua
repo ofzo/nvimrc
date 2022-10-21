@@ -9,10 +9,10 @@ local ensure_packer = function()
   return false
 end
 
-local packer_bootstrap = ensure_packer()
+-- local packer_bootstrap = ensure_packer()
 local ok, packer = pcall(require, "packer")
 if not ok then
-    ensure_packer() 
+    ensure_packer()
 end
 
 local utils = require "packer.util"
@@ -48,10 +48,8 @@ packer.startup({ function(use)
     use 'nvim-telescope/telescope.nvim'
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
     use 'BurntSushi/ripgrep'
-    use 'neovim/nvim-lspconfig'
     -- use "williamboman/nvim-lsp-installer"
     use  { "weilbith/nvim-code-action-menu", cmd = "CodeAction"}
-    use { "williamboman/mason.nvim" } -- lsp installer
     use 'ryanoasis/vim-devicons'
     use "olimorris/onedarkpro.nvim"
     use 'simrat39/symbols-outline.nvim'
@@ -70,15 +68,30 @@ packer.startup({ function(use)
     use 'NvChad/nvim-colorizer.lua'
     use "lukas-reineke/indent-blankline.nvim"
 
-    -- use 'neovim/nvim-lspconfig'
+    use { "williamboman/mason.nvim" } -- lsp installer
+    use "williamboman/mason-lspconfig.nvim"
+    use "mrshmllow/document-color.nvim"
+    use 'hrsh7th/nvim-cmp'
+    use { 'neovim/nvim-lspconfig', config = function() require "core.lspconfig" end, requires = {  "williamboman/mason-lspconfig.nvim"  }, after = "mason.nvim" }
     use 'hrsh7th/cmp-nvim-lsp'
+    use "hrsh7th/cmp-nvim-lsp-signature-help"
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/nvim-cmp'
 
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
+    use "rafamadriz/friendly-snippets"
+
+    use "rcarriga/nvim-notify"
+    use {
+        'phaazon/hop.nvim',
+        branch = 'v2', -- optional but strongly recommended
+        config = function()
+            -- you can configure Hop the way you like here; see :h hop-config
+            require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+        end
+    }
 end,
 config = {
     display = {
