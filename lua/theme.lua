@@ -1,11 +1,13 @@
-local ok , onedarkpro = pcall(require, "onedarkpro")
-if ok then 
+
+local setup = require"setup"
+
+setup("onedarkpro", function (onedarkpro)
 local color = require "onedarkpro.lib.color"
-onedarkpro.setup{ 
-     light_theme = "onelight",
-     colors = {
+onedarkpro.setup{
+    light_theme = "onelight",
+    colors = {
         onedark = {
-            telescope_prompt =color.lighten(onedarkpro.get_colors("onedark").bg, 0.97), 
+            telescope_prompt =color.lighten(onedarkpro.get_colors("onedark").bg, 0.97),
             telescope_results =color.darken (onedarkpro.get_colors("onedark").bg, 0.85)
         },
         onelight = {
@@ -23,7 +25,7 @@ onedarkpro.setup{
             telescope_prompt =  color.lighten(onedarkpro.get_colors("onelight").bg, 0.98),
             telescope_results = color.darken(onedarkpro.get_colors("onelight").bg, 0.95)
         },
-    }, 
+    },
     styles = {
         keywords = "bold,italic",
         comments = "italic",
@@ -58,7 +60,6 @@ onedarkpro.setup{
             fg = "${telescope_prompt}",
             bg = "${purple}",
         },
-
         TelescopePreviewTitle = {
             fg = "${telescope_results}",
             bg = "${green}",
@@ -73,4 +74,4 @@ onedarkpro.setup{
     }
 }
 vim.cmd("colorscheme onedarkpro")
-end
+end)

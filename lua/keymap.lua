@@ -1,16 +1,14 @@
+
 vim.g.mapleader = ";"
-local ok, mapx = pcall(require, "mapx")
-if not ok then
-    return false 
-end
-
-mapx.setup { global = true , whichkey = true }
-
--------------------------------
-require "keymap.core"(mapx)
-require "keymap.git"(mapx)
-require "keymap.telescope"(mapx)
-require "keymap.lsp"(mapx)
+local setup = require"setup"
+setup("mapx", function(mapx)
+    mapx.setup{global = true , whichkey = true }
+    -------------------------------
+    require "keymap.core"(mapx)
+    require "keymap.git"(mapx)
+    require "keymap.telescope"(mapx)
+    require "keymap.lsp"(mapx)
+end)
 
 
 vim.api.nvim_create_augroup("CocGroup", { clear = true })

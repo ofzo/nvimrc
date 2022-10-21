@@ -1,12 +1,13 @@
+local setup = require "setup"
+
 local M = {}
 
-local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+local ok, cmp = setup("cmp_nvim_lsp")
 if not ok then
-    vim.notify "Can't load cmp-nvim-lsp"
     return
 end
 
-M.capabilities = cmp_nvim_lsp.default_capabilities()
+M.capabilities = cmp.default_capabilities()
 
 M.capabilities.textDocument.foldingRange =  {
     dynamicRgistration = false,

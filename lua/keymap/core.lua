@@ -12,5 +12,9 @@ return function(mapx)
         mapx.nnoremap("<Space>\\", function()  vim.cmd "SymbolsOutline" end, "Symbols Outline")
         mapx.nnoremap("<ESC><ESC>", function() vim.cmd "set nohlsearch" end, "Cancel Hightlight")
 
-    -- end)
+        mapx.nnoremap("<C-j>", ":m+1<CR>", "Move down")
+        mapx.nnoremap("<C-k>", ":m-2<CR>", "Move up")
+        mapx.inoremap("<C-j>", ":m+1<CR>", "Move down")
+        mapx.inoremap("<C-k>", ":m-2<CR>", "Move up")
+        mapx.nnoremap("<S-j>", ":t.<CR>", "Duplicate line")
 end

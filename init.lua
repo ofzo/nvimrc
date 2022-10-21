@@ -22,8 +22,6 @@ set.mouse="a"
 set.clipboard="unnamed"
 set.signcolumn="yes"
 set.updatetime=300
-vim.cmd "filetype plugin indent on"
-
 set.backup = false
 set.swapfile = false
 set.writebackup = false
@@ -33,7 +31,13 @@ set.foldexpr="nvim_treesitter#foldexpr()"
 
 -- require -----------------------------------------------------------------
 require "plugins"
-require "setup"
+require "init"
 require "keymap"
 require "theme"
 require "lsp"
+
+vim.cmd "filetype plugin indent on"
+vim.cmd [[packadd packer.nvim]]
+vim.cmd [[ autocmd ColorScheme * highlight NormalFloat guibg=white ]]
+vim.cmd [[ autocmd ColorScheme * highlight FloatBorder guifg=black guibg=white ]]
+

@@ -32,14 +32,14 @@ packer.startup({ function(use)
         },
         tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
-    use { 
+    use {
         'startup-nvim/startup.nvim',
         requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
    }
     use 'yonchu/accelerated-smooth-scroll'
     use 'RishabhRD/nvim-lsputils'
     use 'junegunn/fzf'
-    use { 
+    use {
         'kosayoda/nvim-lightbulb',
         requires = 'antoinemadec/FixCursorHold.nvim'
     }
@@ -72,7 +72,7 @@ packer.startup({ function(use)
     use "williamboman/mason-lspconfig.nvim"
     use "mrshmllow/document-color.nvim"
     use 'hrsh7th/nvim-cmp'
-    use { 'neovim/nvim-lspconfig', config = function() require "core.lspconfig" end, requires = {  "williamboman/mason-lspconfig.nvim"  }, after = "mason.nvim" }
+    use { 'neovim/nvim-lspconfig', config = function() require "language.core" end, requires = {  "williamboman/mason-lspconfig.nvim"  }, after = "mason.nvim" }
     use 'hrsh7th/cmp-nvim-lsp'
     use "hrsh7th/cmp-nvim-lsp-signature-help"
     use 'hrsh7th/cmp-buffer'
@@ -84,39 +84,18 @@ packer.startup({ function(use)
     use "rafamadriz/friendly-snippets"
 
     use "rcarriga/nvim-notify"
-    use {
-        'phaazon/hop.nvim',
-        branch = 'v2', -- optional but strongly recommended
-        config = function()
-            -- you can configure Hop the way you like here; see :h hop-config
-            require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-        end
-    }
 end,
 config = {
     display = {
         prompt_border = "double",
-        open_fn = function () 
+        open_fn = function ()
             local result , win, buf =utils.float {
-                border = {
-                    { '╭', 'FloatBorder' },
-                    { '─', 'FloatBorder' },
-                    { '╮', 'FloatBorder' },
-                    { '│', 'FloatBorder' },
-                    { '╯', 'FloatBorder' },
-                    { '─', 'FloatBorder' },
-                    { '╰', 'FloatBorder' },
-                    { '│', 'FloatBorder' },
-                }
+                border = require"chars".border
             }
             vim.api.nvim_win_set_option(win, "winhighlight", "NormalFloat:Normal")
             return result, win, buf
         end,
-     -- non_interactive = true
     },
-    -- git = {
-    --     default_url_format = "git@github.com:%s",
-    -- },
     compile_path = utils.join_paths(config_path .. "/lua/packer_compiled.lua"),
     auto_reload_compiled = true,
     autoremove = true
@@ -124,9 +103,8 @@ config = {
 })
 
 -- packer sync ------------------------------------------------------------------
-local __dirname = ...
-local ok, packer_compiled =pcall(require, "packer_compiled")
-if not ok then 
+local ok =pcall(require, "packer_compiled")
+if not ok then
     packer.sync()
 end
 
