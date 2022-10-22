@@ -22,7 +22,12 @@ setup("lualine", {
                 colored = false
             }
         },
-        lualine_c = { { "filename", file_status = true, newfile_target = true,  path = 1, shorting_target = 40 } , "lsp_progress"}
+        lualine_c = {
+            { "filename", file_status = true, newfile_target = true,  path = 1, shorting_target = 40 } ,
+            { "lsp_progress" ,
+                spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
+            }
+        }
     },
     extensions = {
         "quickfix", "nvim-tree", "symbols-outline"

@@ -12,6 +12,8 @@ return function(mapx)
         mapx.nnoremap("<Space>.", function() vim.cmd "CodeAction" end, "Code Action")
         mapx.nnoremap("<Space>\\", function()  vim.cmd "SymbolsOutline" end, "Symbols Outline")
         mapx.nnoremap("<ESC><ESC>", function() vim.cmd "set nohlsearch" end, "Cancel Hightlight")
+        -- mapx.nmap("/", function() vim.cmd "set hlsearch" end, "Cancel Hightlight")
+        -- mapx.nmap(":", function() vim.cmd "set hlsearch" end, "Cancel Hightlight")
 
         mapx.nnoremap("<C-j>", ":m+1<CR>", "Move down")
         mapx.nnoremap("<C-k>", ":m-2<CR>", "Move up")
