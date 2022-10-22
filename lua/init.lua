@@ -8,13 +8,24 @@ setup("which-key", {})
 setup("startup", { theme = "startify" })
 setup("nvim-lightbulb", { autocmd = { enable =true } })
 setup("lualine", {
-    options = { theme = "dracula", globalstatus = true },
+    options = {
+        theme = "dracula",
+        globalstatus = true,
+        icons_enable = true,
+        component_separators = { left = " ", right = "" },
+    },
     sections = {
-        lualine_a ={
-            { "mode", icons_enabled = true },
+        lualine_b = {
+            { "branch" , icon = ""},
+            { "diagnostics" ,
+                sources = {"nvim_diagnostic", "coc"},
+                colored = false
+            }
         },
-        lualine_b = { "branch" , { "diagnostics" , sources = {"nvim_diagnostic", "coc"} }},
         lualine_c = { { "filename", file_status = true, newfile_target = true,  path = 1, shorting_target = 40 } , "lsp_progress"}
+    },
+    extensions = {
+        "quickfix", "nvim-tree", "symbols-outline"
     }
 })
 
@@ -53,26 +64,9 @@ setup("indent_blankline", {
 })
 
 
-local ok = setup("nvim-tree", {
-    sort_by = "case_sensitive",
-    open_on_setup = true,
-    view = {
-        adaptive_size = true,
-    },
-    renderer = {
-        group_empty = true,
-    },
-    filters = {
-        dotfiles = false,
-    }
-})
-if ok then
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
-end
-
 setup("mason", {
     ui = {
+        border ="rounded",
         icons = {
             package_installed = "✓",
             package_pending = "➜",
@@ -88,3 +82,18 @@ setup("diffview", {
         }
     }
 })
+
+local ok, notify = setup("notify", {
+    render = "default",
+    icons = {
+        ERROR = "",
+        WARN = "",
+        INFO = "",
+        DEBUG = "",
+        TRACE = "✎",
+    },
+})
+if ok then
+vim.notify = notify
+end
+

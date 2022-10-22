@@ -25,16 +25,17 @@ set.updatetime=300
 set.backup = false
 set.swapfile = false
 set.writebackup = false
-
+vim.g.termguicolors = true
 set.laststatus=3
 set.foldexpr="nvim_treesitter#foldexpr()"
 
+vim.g.registers_window_border = "rounded"
 -- require -----------------------------------------------------------------
 require "plugins"
-require "init"
 require "keymap"
 require "theme"
 require "lsp"
+require "init"
 
 vim.cmd "filetype plugin indent on"
 vim.cmd [[packadd packer.nvim]]

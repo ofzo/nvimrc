@@ -14,7 +14,8 @@ return function(mapx)
 
         mapx.nnoremap("<C-j>", ":m+1<CR>", "Move down")
         mapx.nnoremap("<C-k>", ":m-2<CR>", "Move up")
-        mapx.inoremap("<C-j>", ":m+1<CR>", "Move down")
-        mapx.inoremap("<C-k>", ":m-2<CR>", "Move up")
-        mapx.nnoremap("<S-j>", ":t.<CR>", "Duplicate line")
+        mapx.inoremap("<C-j>", "<ESC>:m+1<CR>", "Move down")
+        mapx.inoremap("<C-k>", "<ESC>:m-2<CR>", "Move up")
+        mapx.nnoremap("<C-S-j>", ":t.<CR>", "Duplicate line")
+        mapx.inoremap("<C-S-j>", "<ESC>:t.<CR>", "Duplicate line")
 end

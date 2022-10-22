@@ -1,3 +1,5 @@
+local setup = require"setup"
+
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -30,6 +32,9 @@ packer.startup({ function(use)
         requires = {
             'nvim-tree/nvim-web-devicons', -- optional, for file icons
         },
+        config = function ()
+            require "interface.tree"
+        end,
         tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
     use {
@@ -43,7 +48,7 @@ packer.startup({ function(use)
         'kosayoda/nvim-lightbulb',
         requires = 'antoinemadec/FixCursorHold.nvim'
     }
-    use 'simrat39/rust-tools.nvim'
+    use { 'simrat39/rust-tools.nvim'}
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
@@ -70,7 +75,7 @@ packer.startup({ function(use)
 
     use { "williamboman/mason.nvim" } -- lsp installer
     use "williamboman/mason-lspconfig.nvim"
-    use "mrshmllow/document-color.nvim"
+    -- use "mrshmllow/document-color.nvim"
     use 'hrsh7th/nvim-cmp'
     use { 'neovim/nvim-lspconfig', config = function() require "language.core" end, requires = {  "williamboman/mason-lspconfig.nvim"  }, after = "mason.nvim" }
     use 'hrsh7th/cmp-nvim-lsp'
@@ -87,11 +92,9 @@ packer.startup({ function(use)
 end,
 config = {
     display = {
-        prompt_border = "double",
+        prompt_border = "rounded",
         open_fn = function ()
-            local result , win, buf =utils.float {
-                border = require"chars".border
-            }
+            local result , win, buf =utils.float { border = require"ui".border }
             vim.api.nvim_win_set_option(win, "winhighlight", "NormalFloat:Normal")
             return result, win, buf
         end,
@@ -99,11 +102,10 @@ config = {
     compile_path = utils.join_paths(config_path .. "/lua/packer_compiled.lua"),
     auto_reload_compiled = true,
     autoremove = true
-}
-})
+}})
 
 -- packer sync ------------------------------------------------------------------
-local ok =pcall(require, "packer_compiled")
+local ok = setup("packer_compiled")
 if not ok then
     packer.sync()
 end
@@ -112,5 +114,5 @@ end
 vim.cmd [[
     augroup packer_user_config
     autocmd!
-    autocmd BufWritePost manager.lua source <afile> | PackerCompile
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
 ]]

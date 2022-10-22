@@ -12,12 +12,12 @@ M.border = {
 }
 
 M.kind_icons = {
-    Text = "",
+    Text = "", --"",
     Method = "",
     Function = "",
     Constructor = "",
     Field = "",
-    Variable = "⚑",
+    Variable = "",
     Class = "",
     Interface = "",
     Module = "",
@@ -36,7 +36,7 @@ M.kind_icons = {
     Struct = "",
     Event = "",
     Operator = "",
-    TypeParameter = "",
+    TypeParameter = "",
 }
 
 

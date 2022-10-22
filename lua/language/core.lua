@@ -1,6 +1,6 @@
 
 local setup = require "setup"
-local border = require "chars".border
+local border = require "ui".border
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type , icon in pairs(signs) do
@@ -39,13 +39,8 @@ setup("lspconfig", function (lspconfig)
                 lspconfig[server].setup(default)
             end,
             clangd = function (server) end,
-            rust_analyzer = function (server)
-                lspconfig.rust_analyzer.setup {
-                    on_attach = function (client, buf)
-                        default.on_attach(client, buf)
-                    end,
-                    capabilities = default.capabilities
-                }
+            rust_analyzer = function ()
+                require "language.rust"
             end,
             tsserver = function (server)
                 lspconfig.tsserver.setup {
@@ -70,10 +65,9 @@ setup("lspconfig", function (lspconfig)
                     on_attach = function (client, buf)
                         default.on_attach(client, buf)
                     end,
-                   capabilities = default.capabilities 
+                   capabilities = default.capabilities
                 }
             end
         }
     end)
 end)
-

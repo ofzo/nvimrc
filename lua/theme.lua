@@ -29,7 +29,7 @@ onedarkpro.setup{
     styles = {
         keywords = "bold,italic",
         comments = "italic",
-        variables = "bold",
+        -- variables = "bold",
         functions = "bold,italic"
     },
     highlights = {

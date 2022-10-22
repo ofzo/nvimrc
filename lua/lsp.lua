@@ -6,7 +6,7 @@ setup("lsp_signature", {
 })
 
 setup("cmp", function(cmp)
-    local kind_icons = require"chars".kind_icons
+    local kind_icons = require"ui".kind_icons
     cmp.setup({
         snippet = {
             expand = function (args)
@@ -92,7 +92,6 @@ setup("cmp", function(cmp)
             { name = 'cmdline' }
         })
     })
-    
 end)
 
 
