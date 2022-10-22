@@ -5,34 +5,9 @@ local setup = require "setup"
 setup("symbols-outline", {})
 setup("which-key", {})
 
+setup("filetype", {})
 setup("startup", { theme = "startify" })
 setup("nvim-lightbulb", { autocmd = { enable =true } })
-setup("lualine", {
-    options = {
-        theme = "dracula",
-        globalstatus = true,
-        icons_enable = true,
-        component_separators = { left = " ", right = "" },
-    },
-    sections = {
-        lualine_b = {
-            { "branch" , icon = "שׂ"},
-            { "diagnostics" ,
-                sources = {"nvim_diagnostic"},
-                colored = false
-            }
-        },
-        lualine_c = {
-            { "filename", file_status = true, newfile_target = true,  path = 1, shorting_target = 40 } ,
-            { "lsp_progress" ,
-                spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
-            }
-        }
-    },
-    extensions = {
-        "quickfix", "nvim-tree", "symbols-outline"
-    }
-})
 
 setup("nvim-treesitter.configs", {
     ensure_installed = { "html", "json", "json5", "python", "scss", "toml", "tsx", "typescript", "rust", "javascript", "go", "css", "cpp", "c", "bash" },
@@ -41,13 +16,6 @@ setup("nvim-treesitter.configs", {
     auto_install = true
 })
 
-setup("telescope", {
-    pickers = {
-        find_files = require "telescope.themes".get_dropdown {
-            layout_config = { preview_cutoff = 0 }
-        }
-    }
-})
 setup("auto-save", {
     execution_message = {
         message = function() -- message to print on save
@@ -104,9 +72,6 @@ end
 
 setup("git-conflict", {
     disable_diagnostics = false,
-    highlights = {
-        incoming = 'DiffText',
-        current = 'DiffAdd',
-    }
 })
+
 

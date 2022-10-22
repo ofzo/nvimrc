@@ -24,12 +24,12 @@ packer.startup({ function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     -- use 'github/copilot.vim'
+    use "nathom/filetype.nvim"
     use 'ray-x/lsp_signature.nvim'
     use {
-        'nvim-lualine/lualine.nvim',
         'arkav/lualine-lsp-progress',
         "rcarriga/nvim-notify",
-        --{"folke/noice.nvim", event = "VimEnter", config = function() require("noice").setup{} end, requires = { "MunifTanjim/nui.nvim","rcarriga/nvim-notify" }}
+        { 'nvim-lualine/lualine.nvim' , config = function() require "interface.lualine-rc" end},
     }
     use {
         'nvim-tree/nvim-tree.lua',
@@ -47,7 +47,10 @@ packer.startup({ function(use)
    }
     use 'yonchu/accelerated-smooth-scroll'
     use 'RishabhRD/nvim-lsputils'
-    use { 'junegunn/fzf', 'nvim-telescope/telescope.nvim' }
+    use {
+        'junegunn/fzf',
+        { 'nvim-telescope/telescope.nvim', config = function() require "interface.telescope-rc" end }
+    }
     use {
         'kosayoda/nvim-lightbulb',
         requires = 'antoinemadec/FixCursorHold.nvim'
@@ -88,10 +91,10 @@ packer.startup({ function(use)
         'hrsh7th/cmp-vsnip',
         'hrsh7th/vim-vsnip',
         "rafamadriz/friendly-snippets",
-        { 'neovim/nvim-lspconfig', config = function() require "language.core" end, requires = {  "williamboman/mason-lspconfig.nvim"  }, after = "mason.nvim" },
-
         ------------ lsp ---------------
-        'simrat39/rust-tools.nvim'
+        'simrat39/rust-tools.nvim',
+
+        { 'neovim/nvim-lspconfig', config = function() require "language.core" end, requires = {  "williamboman/mason-lspconfig.nvim"  }, after = "mason.nvim" }
     }
     use {"akinsho/git-conflict.nvim"}
 end,
