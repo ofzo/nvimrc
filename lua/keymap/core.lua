@@ -4,6 +4,7 @@ return function(mapx)
 
         mapx.nnoremap("<Space>e", ":NvimTreeToggle<CR>", "silent", "File Explorer Toggle")
         mapx.nnoremap("<Space>s", ":w<CR>", "Save")
+        mapx.nnoremap("<Space>q", ":q<CR>", "Save")
         mapx.nnoremap("<Space>t", ":tabnew<CR>", "silent", "New Tab")
         mapx.nnoremap("<Space>w", ":x<CR>", "silent", "Write and Close")
         mapx.nnoremap("<Space>z", ":undo<CR>","silent", "Undo")
@@ -18,4 +19,14 @@ return function(mapx)
         mapx.inoremap("<C-k>", "<ESC>:m-2<CR>", "Move up")
         mapx.nnoremap("<C-S-j>", ":t.<CR>", "Duplicate line")
         mapx.inoremap("<C-S-j>", "<ESC>:t.<CR>", "Duplicate line")
+
+        mapx.vnoremap("<TAB>", ":><CR>", "silent", "add indent")
+        mapx.nnoremap("<TAB>", ":><CR>", "silent", "add indent")
+
+        mapx.vnoremap("<S-TAB>", ":<<CR>", "silent", "decrease indent")
+        mapx.inoremap("<S-TAB>", ":<<CR>", "silent", "decrease indent")
+        mapx.nnoremap("<S-TAB>", ":<<CR>", "silent", "decrease indent")
+
+        mapx.vnoremap("i", "<ESC>", "silent")
+
 end

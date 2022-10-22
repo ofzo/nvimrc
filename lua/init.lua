@@ -97,3 +97,11 @@ if ok then
 vim.notify = notify
 end
 
+setup("git-conflict", {
+    disable_diagnostics = false,
+    highlights = {
+        incoming = 'DiffText',
+        current = 'DiffAdd',
+    }
+})
+

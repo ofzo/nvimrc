@@ -25,8 +25,10 @@ packer.startup({ function(use)
     use 'wbthomason/packer.nvim'
     -- use 'github/copilot.vim'
     use 'ray-x/lsp_signature.nvim'
-    use 'nvim-lualine/lualine.nvim'
-    use 'arkav/lualine-lsp-progress'
+    use {
+        'nvim-lualine/lualine.nvim',
+        'arkav/lualine-lsp-progress'
+    }
     use {
         'nvim-tree/nvim-tree.lua',
         requires = {
@@ -43,14 +45,13 @@ packer.startup({ function(use)
    }
     use 'yonchu/accelerated-smooth-scroll'
     use 'RishabhRD/nvim-lsputils'
-    use 'junegunn/fzf'
+    use { 'junegunn/fzf', 'nvim-telescope/telescope.nvim' }
     use {
         'kosayoda/nvim-lightbulb',
         requires = 'antoinemadec/FixCursorHold.nvim'
     }
-    use { 'simrat39/rust-tools.nvim'}
+
     use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
     use 'BurntSushi/ripgrep'
     -- use "williamboman/nvim-lsp-installer"
@@ -73,22 +74,25 @@ packer.startup({ function(use)
     use 'NvChad/nvim-colorizer.lua'
     use "lukas-reineke/indent-blankline.nvim"
 
-    use { "williamboman/mason.nvim" } -- lsp installer
-    use "williamboman/mason-lspconfig.nvim"
-    -- use "mrshmllow/document-color.nvim"
-    use 'hrsh7th/nvim-cmp'
-    use { 'neovim/nvim-lspconfig', config = function() require "language.core" end, requires = {  "williamboman/mason-lspconfig.nvim"  }, after = "mason.nvim" }
-    use 'hrsh7th/cmp-nvim-lsp'
-    use "hrsh7th/cmp-nvim-lsp-signature-help"
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
+    use { -- lsp installer
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "hrsh7th/nvim-cmp",
+        'hrsh7th/cmp-nvim-lsp',
+        "hrsh7th/cmp-nvim-lsp-signature-help",
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline',
+        'hrsh7th/cmp-vsnip',
+        'hrsh7th/vim-vsnip',
+        "rafamadriz/friendly-snippets",
+        { 'neovim/nvim-lspconfig', config = function() require "language.core" end, requires = {  "williamboman/mason-lspconfig.nvim"  }, after = "mason.nvim" },
 
-    use 'hrsh7th/cmp-vsnip'
-    use 'hrsh7th/vim-vsnip'
-    use "rafamadriz/friendly-snippets"
-
+        ------------ lsp ---------------
+        'simrat39/rust-tools.nvim'
+    }
     use "rcarriga/nvim-notify"
+    use {"akinsho/git-conflict.nvim"}
 end,
 config = {
     display = {

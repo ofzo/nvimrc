@@ -33,7 +33,10 @@ vim.diagnostic.config({
 setup("lspconfig", function (lspconfig)
     setup("mason-lspconfig", function (mason)
         local default = require "language.default"
-        mason.setup{}
+        mason.setup{
+            ensure_installed = {"sumneko_lua", "rust_analyzer"},
+            automatic_installation = true
+        }
         mason.setup_handlers{
             function (server)
                 lspconfig[server].setup(default)
@@ -66,6 +69,14 @@ setup("lspconfig", function (lspconfig)
                         default.on_attach(client, buf)
                     end,
                    capabilities = default.capabilities
+                }
+            end,
+            gopls = function ()
+                lspconfig.gopls.setup{
+                    on_attach = function (client, buf)
+                        default.on_attach(client, buf)
+                    end,
+                    capabilities = default.capabilities
                 }
             end
         }

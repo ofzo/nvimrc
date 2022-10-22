@@ -5,7 +5,7 @@ return function(mapx)
     mapx.group("silent", {}, function()
         mapx.nnoremap(prefix.."r", ":LspRestart<CR>", "LspRestart")
         mapx.nnoremap(prefix.."f", function() vim.lsp.buf.format{ async = true } end , "Format Code")
-        -- nnoremap(prefix.."i", "MasonInstall<CR>", "Lsp Install")
+        mapx.nnoremap(prefix.."i", ":LspInfo<CR>", "Lsp Install")
     end)
 end
 
