@@ -16,9 +16,9 @@ setup("lualine", {
     },
     sections = {
         lualine_b = {
-            { "branch" , icon = ""},
+            { "branch" , icon = "שׂ"},
             { "diagnostics" ,
-                sources = {"nvim_diagnostic", "coc"},
+                sources = {"nvim_diagnostic"},
                 colored = false
             }
         },
