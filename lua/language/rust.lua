@@ -6,7 +6,10 @@ setup("rust-tools", {
      tools = {
          executor = require "rust-tools/executors".termopen,
          inlay_hints = {
-             auto = true
+             auto = true,
+             only_current_line = false,
+             parameter_hints_prefix = "  ",
+             other_hints_prefix = "  ",
          },
          hover_actions = {
              border = require"ui".border,
@@ -24,4 +27,3 @@ setup("rust-tools", {
          standalone = true
      }
  })
- 

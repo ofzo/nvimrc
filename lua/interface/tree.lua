@@ -10,10 +10,12 @@ local ok = setup("nvim-tree", {
     },
     renderer = {
         group_empty = true,
+        highlight_opened_files = "all",
         icons = {
             glyphs = {
                 folder = {
-                    arrow_closed = ">"
+                    arrow_closed = "",
+                    arrow_open = ""
                 }
             }
         }
@@ -21,6 +23,10 @@ local ok = setup("nvim-tree", {
     filters = {
         dotfiles = false,
         custom = { "^.git$" }
+    },
+    trash = {
+        cmd = "gio trash",
+        require_confirm = true,
     },
 })
 if ok then

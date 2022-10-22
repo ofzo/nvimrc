@@ -5,7 +5,7 @@ setup("lualine", {
         globalstatus = true,
         icons_enable = true,
         section_separators = {left = '', right = ''},
-        component_separators = { left = " ", right = "" },
+        component_separators = { left = " ", right = "" },
         statusline = 500,
     },
     sections = {
