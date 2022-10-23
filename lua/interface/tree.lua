@@ -28,6 +28,9 @@ local ok = setup("nvim-tree", {
         cmd = "gio trash",
         require_confirm = true,
     },
+    update_focused_file = {
+        enable = true,
+    }
 })
 if ok then
     vim.g.loaded_netrw = 1

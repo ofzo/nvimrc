@@ -94,11 +94,4 @@ setup("cmp", function(cmp)
     })
 end)
 
-
-local ok, mason = pcall(require, "mason")
-if ok then
-    mason.setup { ui = { border ="rounded" } }
-end
-
-
 require "language.core"

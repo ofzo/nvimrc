@@ -25,7 +25,6 @@ packer.startup({ function(use)
     use 'wbthomason/packer.nvim'
     -- use 'github/copilot.vim'
     use "nathom/filetype.nvim"
-    use 'ray-x/lsp_signature.nvim'
     use {
         'arkav/lualine-lsp-progress',
         "rcarriga/nvim-notify",
@@ -46,23 +45,25 @@ packer.startup({ function(use)
         requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
    }
     use 'yonchu/accelerated-smooth-scroll'
-    use 'RishabhRD/nvim-lsputils'
     use {
         'junegunn/fzf',
         { 'nvim-telescope/telescope.nvim', config = function() require "interface.telescope-rc" end }
     }
     use {
-        'kosayoda/nvim-lightbulb',
-        requires = 'antoinemadec/FixCursorHold.nvim'
+        { "weilbith/nvim-code-action-menu", cmd = "CodeAction"},
+        { 'kosayoda/nvim-lightbulb',
+            requires = 'antoinemadec/FixCursorHold.nvim'
+        }
     }
 
     use 'nvim-lua/plenary.nvim'
-    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+    use {
+        {"akinsho/git-conflict.nvim"},
+        { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+    }
     use 'BurntSushi/ripgrep'
-    -- use "williamboman/nvim-lsp-installer"
-    use  { "weilbith/nvim-code-action-menu", cmd = "CodeAction"}
     use 'ryanoasis/vim-devicons'
-    use "olimorris/onedarkpro.nvim"
+    use { "olimorris/onedarkpro.nvim", config = function () require "theme" end }
     use 'simrat39/symbols-outline.nvim'
     use {
         'saecki/crates.nvim',
@@ -73,13 +74,17 @@ packer.startup({ function(use)
         end,
     }
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-    use "folke/which-key.nvim"
-    use "b0o/mapx.nvim"
+    use {
+        {"folke/which-key.nvim"},
+        { "b0o/mapx.nvim" , config = function () require "keymap" end}
+    }
     use 'pocco81/auto-save.nvim'
     use 'NvChad/nvim-colorizer.lua'
     use "lukas-reineke/indent-blankline.nvim"
 
     use { -- lsp installer
+        'RishabhRD/nvim-lsputils',
+        'ray-x/lsp_signature.nvim',
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "hrsh7th/nvim-cmp",
@@ -94,9 +99,8 @@ packer.startup({ function(use)
         ------------ lsp ---------------
         'simrat39/rust-tools.nvim',
 
-        { 'neovim/nvim-lspconfig', config = function() require "language.core" end, requires = {  "williamboman/mason-lspconfig.nvim"  }, after = "mason.nvim" }
+        { 'neovim/nvim-lspconfig', config = function() require "lsp" end, requires = {  "williamboman/mason-lspconfig.nvim"  }, after = "mason.nvim" }
     }
-    use {"akinsho/git-conflict.nvim"}
 end,
 config = {
     display = {

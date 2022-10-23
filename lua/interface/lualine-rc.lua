@@ -1,4 +1,5 @@
 local setup = require "setup"
+
 setup("lualine", {
     options = {
         theme = "dracula",
@@ -10,7 +11,7 @@ setup("lualine", {
     },
     sections = {
         lualine_a = {
-            { "mode", icons_enable = true }
+            { "mode", icons_enable = true },
         },
         lualine_b = {
             { "branch" , icon = "שׂ"},

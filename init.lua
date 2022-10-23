@@ -33,8 +33,6 @@ vim.g.registers_window_border = "rounded"
 -- require -----------------------------------------------------------------
 require "plugins"
 require "keymap"
-require "theme"
-require "lsp"
 require "init"
 
 vim.cmd "filetype plugin indent on"

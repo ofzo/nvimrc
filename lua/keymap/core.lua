@@ -4,7 +4,7 @@ return function(mapx)
 
         mapx.nnoremap("<Space>e", ":NvimTreeToggle<CR>", "silent", "File Explorer Toggle")
         mapx.nnoremap("<Space>s", ":w<CR>", "Save")
-        mapx.nnoremap("<Space>q", ":q<CR>", "Save")
+        mapx.nnoremap("<Space>q", ":q<CR>", "Quit")
         mapx.nnoremap("<Space>t", ":tabnew<CR>", "silent", "New Tab")
         mapx.nnoremap("<Space>w", ":x<CR>", "silent", "Write and Close")
         mapx.nnoremap("<Space>z", ":undo<CR>","silent", "Undo")
