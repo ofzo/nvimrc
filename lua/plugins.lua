@@ -59,6 +59,7 @@ packer.startup({ function(use)
     use 'nvim-lua/plenary.nvim'
     use {
         {"akinsho/git-conflict.nvim"},
+        "airblade/vim-gitgutter",
         { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
     }
     use 'BurntSushi/ripgrep'
