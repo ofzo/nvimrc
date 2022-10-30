@@ -30,6 +30,22 @@ local ok = setup("nvim-tree", {
     },
     update_focused_file = {
         enable = true,
+    },
+    actions = {
+        change_dir = {
+            enable = true,
+            global = false,
+            restrict_above_cwd = true
+        },
+        file_popup = {
+            open_win_config = {
+                col = 1,
+                row = 1,
+                relative = "cursor",
+                border = "shadow",
+                style = "minimal",
+            }
+        }
     }
 })
 if ok then

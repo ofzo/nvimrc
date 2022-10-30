@@ -11,7 +11,13 @@ return function(mapx)
         mapx.nnoremap("<Space>r", ":redo<CR>","silent", "Redo")
         mapx.nnoremap("<Space>.", function() vim.cmd "CodeAction" end, "Code Action")
         mapx.nnoremap("<Space>\\", function()  vim.cmd "SymbolsOutline" end, "Symbols Outline")
-        mapx.nnoremap("<ESC><ESC>", function() vim.cmd "set nohlsearch" end, "Cancel Hightlight")
+        mapx.nnoremap("<ESC><ESC>", function()
+            if vim.opt.hlsearch == true then
+                vim.cmd "set hlsearch"
+            else
+                vim.cmd "set nohlsearch"
+            end
+        end, "Cancel Hightlight")
         -- mapx.nmap("/", function() vim.cmd "set hlsearch" end, "Cancel Hightlight")
         -- mapx.nmap(":", function() vim.cmd "set hlsearch" end, "Cancel Hightlight")
 
@@ -21,6 +27,9 @@ return function(mapx)
         mapx.inoremap("<C-k>", "<ESC>:m-2<CR>", "Move up")
         mapx.nnoremap("<C-S-j>", ":t.<CR>", "Duplicate line")
         mapx.inoremap("<C-S-j>", "<ESC>:t.<CR>", "Duplicate line")
+
+        mapx.inoremap("<C-Enter>", "<ESC>o", "silent")
+        mapx.inoremap("<C-S-Enter>", "<ESC>O", "silent")
 
         mapx.vnoremap("<TAB>", ":><CR>", "silent", "add indent")
         mapx.nnoremap("<TAB>", ":><CR>", "silent", "add indent")
