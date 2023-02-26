@@ -25,3 +25,5 @@ map("v", "<S-TAB>", ":<<CR>", { desc = "decrease indent", silent = true })
 map("n", "q", ":q<CR>", { desc = "Quit" })
 
 map("n", "<leader>gdf", ":DiffviewOpen<CR>", { desc = "open diff window" })
+map("n", "<leader>z", ":undo<CR>", { desc = "undo" })
+map("n", "<S-z>", ":redo<CR>", { desc = "redo" })
