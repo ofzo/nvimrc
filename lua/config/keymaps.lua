@@ -24,7 +24,11 @@ map("v", "<S-TAB>", ":<<CR>", { desc = "decrease indent", silent = true })
 
 map("n", "<leader>gdf", ":DiffviewOpen<CR>", { desc = "open diff window" })
 map("n", "<leader>z", ":undo<CR>", { desc = "undo" })
+map("n", "<leader>r", ":undo<CR>", { desc = "undo" })
+map("i", "<C-z>", ":undo<CR>", { desc = "undo" })
 map("n", "<S-z>", ":redo<CR>", { desc = "redo" })
+
+map("n", "<ESC>", "<CMD>q<CR>", {})
 
 vim.cmd("command Q q")
 vim.cmd("command X x")
@@ -36,10 +40,3 @@ end, { desc = "Terminal (root dir)" })
 map("n", "<leader>tc", function()
     Util.float_term()
 end, { desc = "Terminal (cwd)" })
-
--- code jump
-map("n", "<leader>gd", "gr<CR>", { desc = "Goto Definition" })
-map("n", "<leader>gr", "gr<CR>", { desc = "References" })
-map("n", "<leader>gD", "gD<CR>", { desc = "Goto Declaration" })
-map("n", "<leader>gI", "gI<CR>", { desc = "Goto Implementation" })
-map("n", "<leader>gt", "gt<CR>", { desc = "Goto Type Definition" })
