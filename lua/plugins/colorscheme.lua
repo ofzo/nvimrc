@@ -1,8 +1,6 @@
 return {
-    -- add gruvbox
     {
         "olimorris/onedarkpro.nvim",
-        name = "onedarkpro",
         opts = {
             colors = {
                 onelight = {

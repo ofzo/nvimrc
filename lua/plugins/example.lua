@@ -40,8 +40,18 @@ return {
             servers = {
                 -- tsserver will be automatically installed with mason and loaded with lspconfig
                 tsserver = {},
+                clangd = {
+                    command = "clangd",
+                    rootPatterns = { "compile_flags.txt", "compile_commands.json" },
+                    filetypes = { "cc", "c", "h", "cpp", "objc", "objcpp" },
+                    args = {
+                        "--clangd-tidy",
+                        "--pretty",
+                        -- "--query-driver=/usr/bin/clang++",
+                    },
+                },
             },
-            -- you can do any additional lsp server setup here
+            -- you can do any additional lsp server setup her
             -- return true if you don't want this server to be setup with lspconfig
             ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
             setup = {
@@ -52,6 +62,10 @@ return {
                 end,
                 -- Specify * to use this function as a fallback for any server
                 -- ["*"] = function(server, opts) end,
+                clangd = function(_, opts)
+                    require("clangd").setup({ server = opts })
+                    return true
+                end,
             },
         },
     },
