@@ -1,6 +1,10 @@
 return {
     {
+        "sainnhe/edge",
+    },
+    {
         "olimorris/onedarkpro.nvim",
+        disabled = true,
         opts = {
             colors = {
                 onelight = {
@@ -20,8 +24,18 @@ return {
             styles = {
                 keywords = "bold,italic",
                 comments = "italic",
-                -- variables = "bold",
+                variables = "bold",
                 functions = "bold,italic",
+            },
+            semantic_tokens = { -- Add/override semantic tokens
+                default = {
+                    ["@class"] = { fg = "${yellow}" },
+                    ["@property"] = { fg = "${red}" },
+                    ["@global"] = { fg = "${red}" },
+                    ["@defaultLibrary"] = { fg = "${cyan}" },
+                    ["@modifier"] = { fg = "${purple}" },
+                    ["@type"] = { fg = "#7e38e8" },
+                },
             },
         },
     },
@@ -29,7 +43,7 @@ return {
     {
         "LazyVim/LazyVim",
         opts = {
-            colorscheme = "onelight",
+            colorscheme = "edge",
         },
     },
 }
