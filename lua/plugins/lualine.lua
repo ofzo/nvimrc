@@ -4,7 +4,7 @@ return {
         event = "VeryLazy",
         opts = {
             options = {
-                theme = "ayu_light",
+                theme = "auto",
                 globalstatus = true,
                 icons_enable = true,
                 section_separators = { left = "", right = "" },

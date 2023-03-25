@@ -1,10 +1,7 @@
 return {
     {
-        "sainnhe/edge",
-    },
-    {
         "olimorris/onedarkpro.nvim",
-        disabled = true,
+        -- disabled = true,
         opts = {
             colors = {
                 onelight = {
@@ -43,7 +40,7 @@ return {
     {
         "LazyVim/LazyVim",
         opts = {
-            colorscheme = "edge",
+            colorscheme = "onelight",
         },
     },
 }

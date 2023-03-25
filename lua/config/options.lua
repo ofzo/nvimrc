@@ -9,3 +9,6 @@ opt.shiftwidth = 4
 opt.softtabstop = 0
 opt.smarttab = true
 opt.swapfile = false
+opt.relativenumber = false
+opt.autowrite = true
+opt.confirm = false

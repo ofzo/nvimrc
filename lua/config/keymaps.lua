@@ -28,7 +28,7 @@ map("n", "<leader>r", ":undo<CR>", { desc = "undo" })
 map("i", "<C-z>", ":undo<CR>", { desc = "undo" })
 map("n", "<S-z>", ":redo<CR>", { desc = "redo" })
 
-map("n", "<ESC>", "<CMD>q<CR>", {})
+-- map("i", "<ESC>", "<CMD>w<CR>", {})
 
 vim.cmd("command Q q")
 vim.cmd("command X x")
