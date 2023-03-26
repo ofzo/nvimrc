@@ -3,7 +3,7 @@ return {
         "simrat39/rust-tools.nvim",
         name = "rust-tools",
         opts = {
-            --    executor = require("rust-tools.executors").termopen,
+            -- executor = require("rust-tools.executors").termopen,
             inlay_hints = {
                 auto = true,
                 only_current_line = false,
