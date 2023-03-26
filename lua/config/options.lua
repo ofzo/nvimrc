@@ -12,3 +12,4 @@ opt.swapfile = false
 opt.relativenumber = false
 opt.autowrite = true
 opt.confirm = false
+opt.autochdir = true
