@@ -4,4 +4,5 @@
 --
 vim.cmd([[
     hi NeoTreeCursorLine guibg=#1179cb cterm=bold guifg=#ffffff
+    " autocmd! BufLeave * :w
 ]])

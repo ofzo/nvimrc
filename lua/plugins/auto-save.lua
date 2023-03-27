@@ -10,7 +10,6 @@ return {
                 trigger_events = { "InsertLeave" },
                 debounce_delay = 1000,
             },
-            s = {},
         },
     },
 }
